@@ -1,0 +1,78 @@
+/* Theme variables and base styles */
+:root {
+  /* Light theme colors (default) */
+  --color-background: 255 255 255;
+  --color-background-secondary: 248 250 252;
+  --color-foreground: 15 23 42;
+  --color-foreground-muted: 100 116 139;
+  --color-primary: 59 130 246;
+  --color-primary-foreground: 255 255 255;
+
+  /* Border colors */
+  --color-border: 226 232 240;
+  --color-border-muted: 241 245 249;
+
+  /* Transition settings */
+  --transition-theme: 0.2s ease;
+}
+
+.dark-theme {
+  /* Dark theme colors */
+  --color-background: 2 6 23;
+  --color-background-secondary: 15 23 42;
+  --color-foreground: 248 250 252;
+  --color-foreground-muted: 148 163 184;
+  --color-primary: 96 165 250;
+  --color-primary-foreground: 2 6 23;
+
+  /* Border colors */
+  --color-border: 51 65 85;
+  --color-border-muted: 30 41 59;
+}
+
+/* Smooth transitions for theme changes */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: var(--transition-theme);
+  transition-duration: var(--transition-theme);
+}
+
+/* Disable transitions during theme initialization to prevent flash */
+.theme-transitioning * {
+  transition: none !important;
+}
+
+/* Base body styles */
+body {
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+
+/* PrimeVue component dark theme overrides */
+.dark-theme .p-password .p-inputtext {
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+  color: white !important;
+}
+
+.dark-theme .p-password .p-inputtext:focus {
+  background-color: #374151 !important;
+  border-color: #6366f1 !important;
+  color: white !important;
+  box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25) !important;
+}
+
+.dark-theme .p-inputtext {
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+  color: white !important;
+}
+
+.dark-theme .p-inputtext:focus {
+  background-color: #374151 !important;
+  border-color: #6366f1 !important;
+  color: white !important;
+  box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25) !important;
+}

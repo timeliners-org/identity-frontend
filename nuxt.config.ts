@@ -23,13 +23,13 @@ export default defineNuxtConfig({
   nitro: {
     devProxy: {
       '/api/**': {
-        target: 'http://localhost:3000',
+        target: process.env.API_BASE_URL || 'http://localhost:3000',
         changeOrigin: true,
         secure: false,
       }
     },
     routeRules: {
-      '/api/**': { proxy: 'http://localhost:3000/**' }
+      '/api/**': { proxy: `${process.env.API_BASE_URL}/**` || 'http://localhost:3000/**' }
     }
   },
 })

@@ -7,12 +7,7 @@ export interface GetUserIDResponse {
 
 export interface LoginResponse {
   "message": string,
-  "user": {
-    "id": string,
-    "email": string,
-    "username": string,
-    "isVerified": boolean
-  },
+  "user": ProfileUser,
   "tokens": {
     "accessToken": string,
     "refreshToken": string,

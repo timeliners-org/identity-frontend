@@ -1,6 +1,5 @@
 import apiLogin from "~/api/login";
 import getProfile from "~/api/profile";
-import revokeToken from "~/api/revoke-token";
 import refreshTokenApi from "~/api/refresh-token";
 import type { ProfileUser } from "~/utils/types";
 
@@ -18,6 +17,8 @@ export const useAuth = () => {
     // Calculate and store token expiration time (15 minutes from now)
     const expirationTime = Date.now() + (15 * 60 * 1000) // 15 minutes in milliseconds
     localStorage.setItem('token_expires_at', expirationTime.toString())
+
+    user.value = data.user
   }
 
   const logout = async () => {

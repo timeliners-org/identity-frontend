@@ -34,3 +34,13 @@ export interface RefreshTokenResponse {
     "expiresIn": number
   }
 }
+
+export interface UpdateUserResponse {
+  "success": boolean,
+  "message": string,
+  "user": ProfileUser
+}
+
+export interface UpdateUserRequest {
+  "username"?: string,
+}

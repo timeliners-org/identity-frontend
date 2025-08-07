@@ -1,5 +1,5 @@
 import apiLogin from "~/api/login";
-import getProfile from "~/api/profile";
+import getUser from "~/api/get-user";
 import refreshTokenApi from "~/api/refresh-token";
 import type { ProfileUser } from "~/utils/types";
 
@@ -31,7 +31,7 @@ export const useAuth = () => {
   const fetchUser = async () => {
     const token = localStorage.getItem('access_token')
     if (!token) return
-    const data = await getProfile()
+    const data = await getUser()
     user.value = data?.user ?? null
   }
 

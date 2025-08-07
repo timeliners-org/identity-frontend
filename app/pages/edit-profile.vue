@@ -198,37 +198,6 @@
           />
         </div>
       </div>
-
-      <!-- Debug Information (nur in Development) -->
-      <div
-        class="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-xl shadow-2xl p-6 mt-6 profile-card"
-      >
-        <h3
-          class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2"
-        >
-          <i class="pi pi-code text-orange-500" />
-          Debug Information (Development Only)
-        </h3>
-        <div
-          class="bg-gray-900 dark:bg-gray-950 text-green-400 p-4 rounded-lg font-mono text-sm overflow-x-auto"
-        >
-          <pre>{{
-            JSON.stringify(
-              {
-                user: user,
-                isLoading: isLoading,
-                isSaving: isSaving,
-                authUser: auth.user.value,
-                editedData: editedData,
-                originalData: originalData,
-                hasChanges: hasChanges,
-              },
-              null,
-              2
-            )
-          }}</pre>
-        </div>
-      </div>
     </div>
   </div>
 </template>

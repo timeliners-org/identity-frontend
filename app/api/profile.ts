@@ -2,7 +2,7 @@ import type { ProfileResponse } from "~/api/schema"
 
 export default async function getProfile(): Promise<ProfileResponse | null> {
   try {
-    const data = await useAPIClient<ProfileResponse>(`/auth/profile`, {
+    const data = await useAPIClient<ProfileResponse>(`/user`, {
       method: 'GET',
     })
     return data ?? null

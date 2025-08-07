@@ -203,10 +203,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, reactive } from "vue";
 import { useAuth } from "../composables/useAuth";
-import { useRouter } from "vue-router";
 import updateUser from "../api/update-user";
+
+// Set page meta
+definePageMeta({
+  title: "Edit Profile - Identity Frontend",
+});
 
 // Reactive data
 const router = useRouter();

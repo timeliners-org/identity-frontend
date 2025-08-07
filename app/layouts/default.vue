@@ -9,6 +9,10 @@
   </div>
 </template>
 
+<script lang="ts" setup>
+
+</script>
+
 <style>
 /* Global styles for dark theme support */
 html {

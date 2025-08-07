@@ -2,7 +2,6 @@
   <div
     class="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 to-purple-600 p-4 relative"
   >
-
     <div
       class="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-xl shadow-2xl p-8 w-full max-w-md border border-white/20 dark:border-gray-600/50 auth-container"
     >
@@ -14,6 +13,11 @@
 </template>
 
 <script setup lang="ts">
+// Set page meta
+definePageMeta({
+  title: "Register - Identity Frontend",
+});
+
 // This is a registration page - no auth required
 </script>
 

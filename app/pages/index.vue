@@ -77,9 +77,12 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
 import { useAuth } from "../composables/useAuth";
-import { useRouter } from "vue-router";
+
+// Set page meta
+definePageMeta({
+  title: "Home - Identity Frontend",
+});
 
 const auth = useAuth();
 const router = useRouter();

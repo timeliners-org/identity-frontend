@@ -13,6 +13,11 @@
 </template>
 
 <script setup lang="ts">
+// Set page meta
+definePageMeta({
+  title: "Login - Identity Frontend",
+});
+
 // This is a login page - no auth required
 </script>
 

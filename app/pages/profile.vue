@@ -194,9 +194,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
 import { useAuth } from "../composables/useAuth";
-import { useRouter } from "vue-router";
+
+// Set page meta
+definePageMeta({
+  title: "User Profile - Identity Frontend",
+});
 
 // Reactive data
 const router = useRouter();

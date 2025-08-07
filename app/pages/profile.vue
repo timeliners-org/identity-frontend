@@ -200,7 +200,7 @@ const isRefreshing = ref(false);
 
 // Computed properties
 const user = computed(() => auth.user.value);
-const isDevelopment = computed(() => true); // Always show in development, can be disabled later
+const isDevelopment = computed(() => false); // Always show in development, can be disabled later
 
 // Methods
 const handleLogout = async () => {

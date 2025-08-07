@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  identity-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: identity-frontend
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - identity-network
+    # Add extra hosts for Docker Desktop compatibility
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  identity-network:
+    driver: bridge

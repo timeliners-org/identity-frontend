@@ -1,3 +1,4 @@
+import refreshToken from "~/api/refresh-token"
 import { useTokenRefresh } from "./useTokenRefresh"
 
 // Check if token needs refresh and refresh it
@@ -15,17 +16,10 @@ async function ensureValidToken(): Promise<void> {
   // If token expires in less than 5 minutes, refresh it
   if (now >= expirationTime - (5 * 60 * 1000)) {
     try {
-      // Use direct $fetch to avoid circular dependency with useAPIClient
-      const config = useRuntimeConfig()
-      const data = await $fetch(`${config.public.apiBaseUrl}/auth/refresh-token`, {
-        method: 'POST',
-        body: {
-          refreshToken: refreshTokenValue
-        }
-      })
+      const data = await refreshToken(refreshTokenValue)
 
-      if (data && (data as any).tokens) {
-        const tokens = (data as any).tokens
+      if (data && data.tokens) {
+        const tokens = data.tokens
         localStorage.setItem('access_token', tokens.accessToken)
         localStorage.setItem('refresh_token', tokens.refreshToken)
 

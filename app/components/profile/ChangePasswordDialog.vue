@@ -18,7 +18,7 @@
         >
           Current Password
         </label>
-        <div class="relative">
+        <div class="relative w-full">
           <ClientOnly>
             <Password
               id="currentPassword"
@@ -38,7 +38,8 @@
                 placeholder="Enter your current password"
                 class="w-full h-12 pl-4 pr-4 text-base border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all duration-200"
                 :class="{
-                  'border-red-500 focus:border-red-500 focus:ring-red-200': formError,
+                  'border-red-500 focus:border-red-500 focus:ring-red-200':
+                    formError,
                 }"
                 :disabled="isLoading"
               />
@@ -55,7 +56,7 @@
         >
           New Password
         </label>
-        <div class="relative">
+        <div class="relative w-full">
           <ClientOnly>
             <Password
               id="newPassword"
@@ -79,7 +80,8 @@
                 placeholder="Enter your new password"
                 class="w-full h-12 pl-4 pr-4 text-base border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all duration-200"
                 :class="{
-                  'border-red-500 focus:border-red-500 focus:ring-red-200': formError,
+                  'border-red-500 focus:border-red-500 focus:ring-red-200':
+                    formError,
                 }"
                 :disabled="isLoading"
               />
@@ -96,7 +98,7 @@
         >
           Confirm New Password
         </label>
-        <div class="relative">
+        <div class="relative w-full">
           <ClientOnly>
             <Password
               id="confirmPassword"
@@ -116,7 +118,8 @@
                 placeholder="Confirm your new password"
                 class="w-full h-12 pl-4 pr-4 text-base border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all duration-200"
                 :class="{
-                  'border-red-500 focus:border-red-500 focus:ring-red-200': formError || passwordMismatch,
+                  'border-red-500 focus:border-red-500 focus:ring-red-200':
+                    formError || passwordMismatch,
                 }"
                 :disabled="isLoading"
               />
@@ -169,12 +172,12 @@ import changePassword from "~/api/change-password";
 const props = defineProps({
   visible: {
     type: Boolean,
-    required: true
-  }
+    required: true,
+  },
 });
 
 // Emits
-const emit = defineEmits(['update:visible', 'success']);
+const emit = defineEmits(["update:visible", "success"]);
 
 // Reactive data
 const currentPassword = ref("");
@@ -208,11 +211,14 @@ const handleSubmit = async () => {
   isLoading.value = true;
 
   try {
-    const result = await changePassword(currentPassword.value, newPassword.value);
+    const result = await changePassword(
+      currentPassword.value,
+      newPassword.value
+    );
 
     if (result) {
       successMessage.value = result.message || "Password changed successfully!";
-      
+
       // Reset form after success
       setTimeout(() => {
         resetForm();
@@ -220,11 +226,13 @@ const handleSubmit = async () => {
         emit("success");
       }, 1500);
     } else {
-      formError.value = "Failed to change password. Please check your current password.";
+      formError.value =
+        "Failed to change password. Please check your current password.";
     }
   } catch (error) {
     console.error("Change password error:", error);
-    formError.value = error.message || "An error occurred while changing password.";
+    formError.value =
+      error.message || "An error occurred while changing password.";
   } finally {
     isLoading.value = false;
   }
@@ -299,13 +307,34 @@ watch(
   border-top-color: #374151;
 }
 
+/* Global fix for PrimeVue Password input width */
+:global(.p-password-input) {
+  width: 100% !important;
+}
+
 /* Password field styling */
+:deep(.password-field) {
+  width: 100% !important;
+  display: block !important;
+}
+
 :deep(.password-field .p-password) {
-  width: 100%;
+  width: 100% !important;
+  display: block !important;
+}
+
+:deep(.password-field .p-password .p-inputwrapper) {
+  width: 100% !important;
+  display: block !important;
+}
+
+:deep(.password-field .p-password .p-inputwrapper .p-inputtext) {
+  width: 100% !important;
+  display: block !important;
 }
 
 :deep(.password-field .p-password input) {
-  width: 100%;
+  width: 100% !important;
   height: 3rem;
   padding: 0 1rem;
   font-size: 1rem;
@@ -313,6 +342,31 @@ watch(
   border-radius: 0.5rem;
   transition: all 0.2s ease-in-out;
   background-color: white;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+:deep(.password-field .p-password .p-password-input) {
+  width: 100% !important;
+  display: block !important;
+}
+
+:deep(.password-field .p-password .p-inputwrapper) {
+  width: 100% !important;
+  display: block !important;
+}
+
+/* Force all internal password component elements to full width */
+:deep(.password-field .p-password *) {
+  box-sizing: border-box;
+}
+
+:deep(.password-field .p-password .p-inputwrapper-filled) {
+  width: 100% !important;
+}
+
+:deep(.password-field .p-password .p-inputwrapper-focus) {
+  width: 100% !important;
 }
 
 :deep(.password-field .p-password input:focus) {
@@ -332,14 +386,23 @@ watch(
 
 /* Dark theme password field */
 :global(.dark-theme) :deep(.password-field .p-password input) {
-  background-color: #374151;
-  border-color: #4b5563;
-  color: white;
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+  color: white !important;
+  width: 100% !important;
+}
+
+:global(.dark-theme) :deep(.password-field .p-password .p-inputtext) {
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+  color: white !important;
+  width: 100% !important;
 }
 
 :global(.dark-theme) :deep(.password-field .p-password input:focus) {
-  border-color: #6366f1;
-  background-color: #374151;
+  border-color: #6366f1 !important;
+  background-color: #374151 !important;
+  width: 100% !important;
 }
 
 /* Button styling */

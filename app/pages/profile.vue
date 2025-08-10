@@ -192,7 +192,7 @@
     </div>
 
     <!-- Change Password Dialog -->
-    <ChangePasswordDialog
+    <ProfileChangePasswordDialog
       v-model:visible="showChangePasswordDialog"
       @success="onPasswordChangeSuccess"
     />

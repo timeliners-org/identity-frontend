@@ -129,8 +129,8 @@
               <Button
                 label="Change Password"
                 icon="pi pi-key"
-                class="bg-gray-500 hover:bg-gray-600 border-0"
-                disabled
+                class="bg-orange-500 hover:bg-orange-600 border-0"
+                @click="showChangePasswordDialog = true"
               />
               <Button
                 label="Account Settings"
@@ -190,6 +190,12 @@
         </div>
       </div>
     </div>
+
+    <!-- Change Password Dialog -->
+    <ChangePasswordDialog
+      v-model:visible="showChangePasswordDialog"
+      @success="onPasswordChangeSuccess"
+    />
   </div>
 </template>
 
@@ -206,6 +212,7 @@ const router = useRouter();
 const auth = useAuth();
 const isLoading = ref(true);
 const isRefreshing = ref(false);
+const showChangePasswordDialog = ref(false);
 
 // Computed properties
 const user = computed(() => auth.user.value);
@@ -238,6 +245,11 @@ const goToLogin = () => {
 
 const goToEditProfile = () => {
   router.push("/edit-profile");
+};
+
+const onPasswordChangeSuccess = () => {
+  // Password was changed successfully, you might want to show a toast or notification
+  console.log("Password changed successfully!");
 };
 
 // Lifecycle

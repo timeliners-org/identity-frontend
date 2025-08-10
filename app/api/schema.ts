@@ -44,3 +44,7 @@ export interface UpdateUserResponse {
 export interface UpdateUserRequest {
   "username"?: string,
 }
+
+export interface ChangePasswordResponse {
+  "message": string
+}
